@@ -1,60 +1,74 @@
-Projekt ma na celu wygenerowanie 2d procedurlanego lochu, który składa się z wczęsniej przygotowanych prefabów pomieszczeń oraz korytarzy łączcych te pomieszczenia. Projekt został wykonany w języku C# w środowisku 
-unity. Wykorzystuję on takie algorytmy jak Delaunay triangulation, znajdowanie minimum spanning tree oraz A* search algorithm. Koncept projektu został zaczerpnięty z pierwszej części tego filmiku: 
-https://www.youtube.com/watch?v=rBY2Dzej03A&t=257s&ab_channel=Vazgriz. W dalszej części postaram się w skrócię opisać koljene kroki przedstawione na filmiku w mojej implementacji tego algorytmu.
+The project aims to generate a procedural dungeon in two dimensions, consisting of pre-made room prefabs and corridors connecting these rooms. The project was developed in C# within the Unity environment. It utilizes
+algorithms such as Delaunay triangulation, finding the minimum spanning tree, and the A* search algorithm.
+The project concept was inspired by the first part of this video: [https://www.youtube.com/watch?v=rBY2Dzej03A&t=257s&ab_channel=Vazgriz]. In the following sections, I will briefly describe the subsequent steps presented
+in the video in my implementation of these algorithms, avoiding diving into details and simply outlining how the mentioned algorithms work.
 
-Pierwszym krokim jest umieszczenie pomieszczeń w jakichś losowych punktach na powierzchni o wcześniej ustalonych rozmiarach. Wielkość początkowej powierzhni w dalszym etapie decyduje między innymi o tym jak długi i kręty 
-będzie pojedynczy korytarz. Jako, że moim celem jest osiągnięcie względnie krótkich i jak najbardziej krętych korytarzy to ustawiam rozmiar początkowej przestrzeni na względnie małą (na tyle że większość pokoi będzie na siebie nachodzić)
+The first step is to place rooms at random points on a surface with predetermined dimensions. The size of the initial surface determines factors such as the length and winding of individual corridors. To achieve relatively
+short and winding corridors, I set the size of the initial space to be relatively small, so that most rooms overlap.
 
 [zdiecie nakladającyhc się pomieszczeń i wynikające z tego korytarze oraz oddalone od siebie pokoje i dluygie korytarze]
 
-Następnym krokiem jest rozsunięcie pomieszczeń od siebie. Dzieje się to poprzez porównnywanie dwóch kolejnych pomieszczeń. Jeśli na siebie nachodzą to wybierana jest jeda długość decydująca o odleglości o jaką zostanie 
-przesunięty pokój. Sprawdzam odległość miedzy środkami pokojów oraz dłogóść i szerokość każdego z nich. Nawiększa wartość zostaje wybrana jako wielkość przesunięcia. Następnie pokój jest przesówany losowo w jedną z czterach 
-stron o tą właśnie wartość. Jeżeli wcześniej wspomniana startowa powierzchnia na której rozrzucone zostaną pomieszczenia będzię duża, największą wartością zawsze będzie odległość miedzy pokojami i to właśnie ona spowoduję 
-ze korytarzę będą długie i nudne 
+The next step is to spread the rooms apart. This involves comparing two consecutive rooms. If they overlap, a length is chosen to determine the distance by which the room will be moved. The distance between the room
+centers and the length and width of each room are checked. The largest value is chosen as the displacement size, and then the room is randomly moved in one of four directions by this value. If the aforementioned initial
+surface on which the rooms are scattered is large, the distance between the rooms will always be the highest value, resulting in long and boring corridors.
 
 [zdiecie rozsunietych ]
 
-Teraz można sporządzić Delaunay Triangulation (https://en.wikipedia.org/wiki/Delaunay_triangulation)
-Dzięki temu algorytmowi znajdziemy optymalne połączenia pokoi miedzy sobą.
-
-Zbiorem punktów z którego zostanie sporządzony graf jest zbiór w współrzędnych dla każdego pokoju które określają w którym miejscu znajdują się drzwi a co za tym idzie to do tego miejsca ma prowadzic 
-kotytarz. Współrzędne te są obliczane dzięki loklanym współrzędnym drzwi dla kazdego pokoju oraz jego współrzednych środka w ogólnej przestrzeni.
+Now, Delaunay Triangulation can be performed [https://en.wikipedia.org/wiki/Delaunay_triangulation]. Thanks to this algorithm, optimal connections between rooms are found. The set of points used to construct the graph
+consists of coordinates for each room, indicating where thedoor is located and thus where the corridor should lead. These coordinates are calculated based on the local door coordinates for each room and its center
+coordinates in the general space.
 
 [screen door location, screen pokoju z kreskami pokazującymi gdzie jest door location]
 
-
-Celem algorytmu jest stworzenie z listy punktów tak zwanej triangulacji czyli zbioru trójkóatów, które cechują się tym, że żaden wierzchołek nie leży wewnątrz okręgu opisanego w dowolnym trójkącie w zbiorze.
-Pierwszym krokiem jest stworzenie pierwszego tak zwanego super trójkąta, który jest na tyle duży aby wszystkie punkty znajdowały się w jego wnętrzu. W tym celu sprawdzam największę odległości w pionie i poziomie miedzy 
-punktami i za pomocą wielokrtoności tych odległości wyznaczam położenie punktów tego trójkąta. Następnie iteruję po wszystkich punktach dodając je to triangulacje czyli tworząc z nich trójkąty sprawdzając czy 
-spełniają wcześniej wymieniony warunek. Po wykananiu algorytmu otrzymuje zbiór krawędzi należacych do trójkątów, którę bardzo często się powtarzają dla tego usuwam duplikaty. Jeżeli w zbiorzę znajdują się dwie krawędzie 
-miedzy tymi samymi punktami (tzn z punktu A do B oraz z punktu B do A) to równierz kasuje jedną z tych krawędzi.
+The goal of the algorithm is to create a list of points called a triangulation, i.e., a set of triangles characterized by the property that no vertex lies inside the circumcircle of any triangle in the set. The first step
+is to create the so-called super triangle, which is large enough to contain all points inside it. Then, all points are iterated through, added to the triangulation, forming triangles, and checking if they satisfy the
+aforementioned condition. After the algorithm is executed, a set of edges belonging to triangles is obtained, which often repeat, so duplicates are removed. If there are two edges between the same points in the set
+(i.e., from point A to B and from point B to A), one of these edges is also deleted.
 
 [zdiecie triangulacji]
 
-
-
-Następnym krokiem będzie znalezienie gównej drogi w lochu. Ma być to optymalna trasa prowadząca przez wszystkie pomieszczenia. Pomoże w tym tak zwane MST (Minimum spanning tree). Jest to minimlane podrzewo które cechuję 
-się tym że zawiera wszytkie punkty w grafie połączone krawędziami o możliwie minimalnych wagach w taki sposób a by nie tworzyć cykli. W moim przypadku graf nie jest ważony więc podczas wybierania odpowiednich krawędzi 
-zawsze wybierana jest pierwsza możliwa. Sposób znajdowania MST polega na utworzeniu listy odwiedzonych punktów gdzie na początku znajduję się tylko jeden wybrany losowo punkt. Następnie tak długo jak lista wierzchołków 
-odwiedzonych nie zawiera wszystkich wierzchołków wyszukuje krawędzi która spelnia warunek którym jest łączenie punktu odwiedzonego z punktem jeszcze nie odwiedzonym. Gdy taka krawędź zostanie znaleziona zostaje ona dodana do MST a 
-nowy wierzchołek zostaje dodany do listy odwiedzoncych. 
-
+The next step is to find the main path in the dungeon. This should be the optimal route through all rooms. This is facilitated by the Minimum Spanning Tree [https://en.wikipedia.org/wiki/Minimum_spanning_tree]. 
+It is a minimal subtree containing all points in the graph connected by edges with the smallest possible weights, so as not to form cycles. In my case, the graph is unweighted, so when selecting the appropriate edges, the
+first possible one is always chosen. The method offinding the MST involves creating a list of visited points, starting with only one randomly selected point. Then, as long as the list of visited vertices does not contain
+all vertices, an edge that meets the condition ofconnecting a visited point with an unvisited one is searched for. When such an edge is found, it is added to the MST, and the new vertex is added to the list of visited ones.
 
 [zdiecie mst]
 
-Takie drzewo tworzy loch z niewymagającymi korytarzami dla tego następnym krokiem jest dodanie pewnych niewykorzystanych jeszcze krawędzi co spowoduje utworzenie cykli w grafie a co za tym idzie loch stanie się bardziej 
-kręty. Iteruję po wszystkich krawędziach spoza mst i z pewną szansą dodaje je do mst (szansę tą można dostosować z poziomu inspektora w unity. Zazwyczaj wykorzystuje ok. 30%) 
+Such a tree creates a dungeon with straight corridors. The next step is to add certain unused edges, which will create cycles in the graph and thus make the dungeon more winding. I iterate through all the edges outside
+the MST and with a certain probability add them to the MST (this probability can be adjusted from the Unity inspector, usually around 30%).
 
 [zdiecie nowego mst]
- 
 
-Teraz nic juz nie stoi na przeszkodzie aby wytyczyć odpowiednie scieżki między pokojami. Wykorzystany do tego został A* search algorithm. (https://en.wikipedia.org/wiki/A*_search_algorithm)
-Do tego celu stworzyłem odpowiednią siatkę pozawalającą na szukanie scieżki. Jeden 
-kwadrat przedstawiał jeden kawałek korytarza który później reprezentowany będzie jako jakiś prefab. Żeby ta technika działała trzeba dbać o to aby każdy prefab pokoju równierz był odpowiedniej wielkości i wpasowywał się w 
-siatkę.
+Now, nothing stands in the way of laying out the appropriate paths between the rooms. This was accomplished using the A* search algorithm. For this purpose, a suitable grid was created to facilitate pathfinding.
+Each square represented a "piece" of the corridor, which would later be represented as a prefab. To make this technique work, care was taken to ensure that each room prefab was of the appropriate size and fit into the grid.
+Before the search for corridors begins, all rooms are iterated through to mark on the grid where the rooms are located and to designate them as walls, indicating that a corridor cannot be placed there. Now, the algorithm
+can start searching for optimal paths between the vertices of all edges in the MST (enriched with edges introducing cycles). In the meantime, vertices between which a corridor is created (i.e., squares next to the rooms
+just below the doors) are collected in a separate list, so that they can later be properly prepared for interaction with the room doors.
 
 [tutaj screen siatki z pokojami ]
 
+The algorithm divides all available points (squares in the grid) into two groups: OpenSet and CloseSet. OpenSet stores points that are iterated through, while CloseSet stores points that have been fully explored.
+In the main loop, a point with the smallest total cost is selected, estimated as the sum of the cost of reaching that point from the start and the distance from the end point. Now it is removed from OpenSet, and then
+all its neighbors are examined, setting parameters for them, depending on, among other things, the previously selected point. An important moment occurs when a point achieves a new smallest cost of arrival. Then, besides
+calculating all parameters, a variable, previous, is also initialized, pointing to the previous point. Its purpose is to help create the path from the back, checking subsequent previous variables for each point, starting
+from the end. If the examined neighbor is not yet in OpenSet, it is now added to it, ensuring the continuation of the main loop. Finding the path can end in two ways. The first is when the selected point eventually
+becomes our endpoint, and the loop ends, returning a list of consecutive points leading from start to finish. The second is when all points are explored and OpenSet is empty without finding a point that is our
+endpoint, then an empty path is returned, indicating that such a path does not exist.
 
 
 
+After this process, two ready lists are obtained. One with all the squares in the grid where corridor prefabs should be placed, and the other list containing all the squares in the grid representing corridor prefabs
+that need to be adapted to neighbor the corridor doors. The only additional task is to remove duplicates, because in the process of creating corridors, these freshly generated ones are not set as walls, causing corridors
+to intersect. This intentional feature leads to the creation of interesting combinations, such as intersections, double, or even triple corridors, and something resembling squares. Each square on the grid is replaced by
+a corridor prefab, which is simply a small space enclosed by walls on all sides.
+
+[zdj prefabu korytarza]
+
+Now, by comparing all the points in the corridor list, it is checked whether a given point is adjacent to another point that is also in this list. If so, based on the x, y coordinates on the map, its position is
+checked (whether it is on top, bottom, left, or right), and the appropriate wall is removed. This ultimately leads to the creation of a complete corridor. The principle is similar for the corridor fragment at the
+doors of the rooms. The room where the given end point of the corridor is located is found, and the appropriate wall is removed based on the local door location relative to the center of the room. For example,
+if the door location meets the condition: door.x > 0 && Mathf.Abs(door.x) > room.size.x/2, it means that the door is to the right of the room, i.e., to the left of the corridor.
+
+Such a conducted algorithm results in the creation of a fully functional, unique dungeon.
+
+[gotowy loch]
