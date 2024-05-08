@@ -2,6 +2,7 @@ The project aims to generate a procedural dungeon in two dimensions, consisting 
 connecting these rooms. The project was developed in C# within the Unity environment. It utilizes
 algorithms such as Delaunay triangulation, finding the minimum spanning tree, and the A* search algorithm.
 The project concept was inspired by the first part of this video:
+
 [https://www.youtube.com/watch?v=rBY2Dzej03A&t=257s&ab_channel=Vazgriz]
 
 In the following sections, I will briefly describe the subsequent steps presented
