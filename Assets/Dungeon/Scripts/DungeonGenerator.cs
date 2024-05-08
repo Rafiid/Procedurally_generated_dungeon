@@ -61,7 +61,7 @@ public class DungeonGenerator : MonoBehaviour
 
         for(int i = 0; i < rooms; i++)
         {
-            //create room with random size and location, add collider
+            //create room and set location
             int randomRoom = RandomInt(0, roomPrefabs.Length);
             GameObject newRoom = Instantiate(roomPrefabs[randomRoom], Vector3.zero, Quaternion.identity);
             newRoom.name = "Room" + index;
@@ -69,7 +69,7 @@ public class DungeonGenerator : MonoBehaviour
             newRoom.transform.parent = GameObject.Find("Rooms").transform;
             Transform floorTransform = newRoom.transform.Find("FloorTIle");
 
-            //all rooms are on the small area cuz latter they will be spread out and smaller start area will cause relatively good corridor lengths
+            //all rooms are on the small area because latter they will be spread out and smaller start area will cause relatively good corridor lengths
             int Xcoord = RandomInt(0, 10);
             int Ycoord = RandomInt(0, 10);
 
@@ -97,7 +97,7 @@ public class DungeonGenerator : MonoBehaviour
     {
         int direction = RandomInt(0, 4);
 
-        //move room in one of four directions based on random number and change room coor
+        //move room in one of four directions based on random number and change room coord
 
         if(direction == 0)
         {
@@ -176,7 +176,7 @@ public class DungeonGenerator : MonoBehaviour
 
     private bool IsOverlapping(Room room, Room otherRoom)
     {
-        //callculate vertices of two room and then use them to check if they overlapping (they can touch themselves)
+        //callculate vertices of two room and then use them to check if they overlapping
         Vector2[] roomVertices = new Vector2[4];
         roomVertices[0] = new Vector2(room.coord.x - room.size.x / 2, room.coord.y - room.size.y / 2); // left down vertice 
         roomVertices[1] = new Vector2(room.coord.x + room.size.x / 2, room.coord.y - room.size.y / 2); // right down vertice
@@ -368,11 +368,12 @@ public class DungeonGenerator : MonoBehaviour
 
         Transform corridorsTransform = transform.Find("Corridors");
 
-        //add rooms as a wall to te pathfinder map
+        
         foreach(Edge edge in MST)
         {
             AStarPathfinding aStarPathfinding = new AStarPathfinding(smallX, bigX, smallY, bigY);
 
+            //add rooms as a wall to te pathfinder map
             foreach(Room room in roomList)
             {
                 for(int i=0; i<room.size.x; i+=6)
@@ -390,6 +391,7 @@ public class DungeonGenerator : MonoBehaviour
                 }
             }
 
+            //set start and endpoint of the path
             aStarPathfinding.SetStart(edge.pointA.x, edge.pointA.y, edge.pointB.x, edge.pointB.y);
 
             //add map localization and world localization

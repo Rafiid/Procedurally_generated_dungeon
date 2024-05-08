@@ -24,7 +24,7 @@ public class Spot
 
     public Spot(int x, int y, int i, int j)
     {
-        //weried numbers to make cube be in the middle of  grid
+        //weried numbers to make cube be in the middle of grid
         this.x = x - 1;
         this.y = y - 1;
 
