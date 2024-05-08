@@ -86,7 +86,7 @@ usually around 30%).
 </p> 
 
 
-<p align="center">[Path found by MST. Green color - MST, Blue color - extra edges for cycles in the dungeon, Red color - unused edges ]</p> 
+<p align="center">[Green color - MST, Blue color - extra edges for cycles in the dungeon, Red color - unused edges ]</p> 
 
 Now, nothing stands in the way of laying out the appropriate paths between the rooms. This was accomplished using the A* 
 search algorithm. For this purpose, a suitable grid was created to facilitate pathfinding.
@@ -99,7 +99,11 @@ In the meantime, vertices between which a corridor is created (i.e., squares nex
 just below the doors) are collected in a separate list, so that they can later be properly prepared for interaction with the 
 room doors.
 
-[tutaj screen siatki z pokojami ]
+<p align="center">
+  <img src="https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/1ec20c58-195c-47a4-9747-cac589343e2f">
+</p> 
+
+<p align="center">[Grid map representation. White area is place where corridors can be generated. Red area shows where rooms are and where corridors cannot be generated]</p> 
 
 The algorithm divides all available points (squares in the grid) into two groups: OpenSet and CloseSet. OpenSet stores 
 points that are iterated through, while CloseSet stores points that have been fully explored.
