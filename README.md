@@ -14,7 +14,7 @@ short and winding corridors, I set the size of the initial space to be relativel
 
 ![image](https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/10214b0c-983d-4efe-9e6c-53b7710b61c7)
 
-                                            [Ten rooms in small area]
+<p align="center">[Ten rooms in small area]</p> 
 
 The next step is to spread the rooms apart. This involves comparing two consecutive rooms. If they overlap, a length is 
 chosen to determine the distance by which the room will be moved. The distance between the room
@@ -25,7 +25,7 @@ resulting in long and boring corridors.
 
 ![image](https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/21db1b9f-7bae-4f2e-b5dd-f4a38c22dbf7)
 
-                                            [Ten rooms spread apart]
+<p align="center">[Ten rooms spread apart]
 
 Now, Delaunay Triangulation can be performed [https://en.wikipedia.org/wiki/Delaunay_triangulation]. Thanks to this 
 algorithm, optimal connections between rooms are found. The set of points used to construct the graph
@@ -37,7 +37,8 @@ coordinates in the general space.
 
 
 
-                                    [Door location for room type with index 0]
+<p align="center">[Door location for room type with index 0]</p> 
+
 
 The goal of the algorithm is to create a list of points called a triangulation, i.e., a set of triangles characterized by 
 the property that no vertex lies inside the circumcircle of any triangle in the set. The first step
@@ -47,7 +48,9 @@ aforementioned condition. After the algorithm is executed, a set of edges belong
 repeat, so duplicates are removed. If there are two edges between the same points in the set
 (i.e., from point A to B and from point B to A), one of these edges is also deleted.
 
-[zdiecie triangulacji]
+![image](https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/82afb300-fca4-4645-9d88-8bd81d56d276)
+
+<p align="center">[Delaunay Triangulation for rooms in dungeon]</p> 
 
 The next step is to find the main path in the dungeon. This should be the optimal route through all rooms. This is 
 facilitated by the Minimum Spanning Tree [https://en.wikipedia.org/wiki/Minimum_spanning_tree]. 
