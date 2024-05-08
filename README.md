@@ -3,9 +3,10 @@ connecting these rooms. The project was developed in C# within the Unity environ
 algorithms such as Delaunay triangulation, finding the minimum spanning tree, and the A* search algorithm.
 The project concept was inspired by the first part of this video:
 [https://www.youtube.com/watch?v=rBY2Dzej03A&t=257s&ab_channel=Vazgriz]
+
 In the following sections, I will briefly describe the subsequent steps presented
 in the video in my implementation of these algorithms, avoiding diving into details and simply outlining how the mentioned 
-algorithms work.
+algorithms work. Images of final dungeon are at the bottom of the readme.
 
 <p align="center">
   <img src="https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/d58f6e57-cb0c-427a-bc9b-bb0590d40bcb">
