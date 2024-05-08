@@ -25,7 +25,9 @@ the room is randomly moved in one of four directions by this value. If the afore
 surface on which the rooms are scattered is large, the distance between the rooms will always be the highest value, 
 resulting in long and boring corridors.
 
-<p align="center">![image](https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/21db1b9f-7bae-4f2e-b5dd-f4a38c22dbf7)</p> 
+<p align="center">
+  <img src="https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/21db1b9f-7bae-4f2e-b5dd-f4a38c22dbf7")
+</p> 
 
 <p align="center">[Ten rooms spread apart]
 
