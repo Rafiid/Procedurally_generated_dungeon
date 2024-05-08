@@ -8,7 +8,7 @@ in the video in my implementation of these algorithms, avoiding diving into deta
 algorithms work.
 
 <p align="center">
-  <img src="https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/39ced0d5-0274-47be-a9c5-20a0296946f6">
+  <img src="https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/d58f6e57-cb0c-427a-bc9b-bb0590d40bcb">
   <img src="https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/61e2be98-8d45-4091-8c45-bd8d2643a5a5">
 </p>
 <p align="center">[Dungeon generator properties and main methods]</p> 
