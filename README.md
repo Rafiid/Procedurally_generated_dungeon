@@ -37,7 +37,7 @@ coordinates are calculated based on the local door coordinates for each room and
 coordinates in the general space.
 
 <p align="center">
-  <img src="https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/d8e650bf-b60a-400d-9fef-215feeada64e">
+  <img src="https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/690a2434-d6db-45ea-924f-80de519b3f10">
 </p> 
 
 <p align="center">[Door location for room type with index 0]</p> 
