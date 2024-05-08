@@ -204,7 +204,7 @@ Such a conducted algorithm results in the creation of a fully functional, unique
 
 
 # Used assets and other
-- concept: https://www.youtube.com/watch?v=rBY2Dzej03A&t=257s&ab_channel=Vazgriz
+- Concept: https://www.youtube.com/watch?v=rBY2Dzej03A&t=257s&ab_channel=Vazgriz
 - First person controller: https://assetstore.unity.com/packages/3d/characters/modular-first-person-controller-189884
 - Dungeon prefabs: https://assetstore.unity.com/packages/3d/environments/dungeons/decrepit-dungeon-lite-33936
 - Project that helped me a lot in understanding of Delaunay Triangulation: https://github.com/Vignesh2508/Delaunay/tree/master
