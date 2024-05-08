@@ -2,12 +2,18 @@ The project aims to generate a procedural dungeon in two dimensions, consisting 
 connecting these rooms. The project was developed in C# within the Unity environment. It utilizes
 algorithms such as Delaunay triangulation, finding the minimum spanning tree, and the A* search algorithm.
 The project concept was inspired by the first part of this video:
-
 [https://www.youtube.com/watch?v=rBY2Dzej03A&t=257s&ab_channel=Vazgriz]
-
 In the following sections, I will briefly describe the subsequent steps presented
 in the video in my implementation of these algorithms, avoiding diving into details and simply outlining how the mentioned 
 algorithms work.
+
+<p align="left">
+  <img src="https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/39ced0d5-0274-47be-a9c5-20a0296946f6">
+</p>
+
+<p align="center">[Ten rooms in small area]</p> 
+
+
 
 The first step is to place rooms at random points on a surface with predetermined dimensions. The size of the initial 
 surface determines factors such as the length and winding of individual corridors. To achieve relatively
@@ -18,6 +24,8 @@ short and winding corridors, I set the size of the initial space to be relativel
 </p>
 
 <p align="center">[Ten rooms in small area]</p> 
+
+
 
 The next step is to spread the rooms apart. This involves comparing two consecutive rooms. If they overlap, a length is 
 chosen to determine the distance by which the room will be moved. The distance between the room
@@ -32,9 +40,11 @@ resulting in long and boring corridors.
 
 <p align="center">[Ten rooms spread apart]
 
+
+
 Now, Delaunay Triangulation can be performed [https://en.wikipedia.org/wiki/Delaunay_triangulation]. Thanks to this 
 algorithm, optimal connections between rooms are found. The set of points used to construct the graph
-consists of coordinates for each room, indicating where thedoor is located and thus where the corridor should lead. These 
+consists of coordinates for each room, indicating where the door is located and thus where the corridor should lead. These 
 coordinates are calculated based on the local door coordinates for each room and its center
 coordinates in the general space.
 
@@ -43,6 +53,7 @@ coordinates in the general space.
 </p> 
 
 <p align="center">[Door location for room type with index 0]</p> 
+
 
 
 The goal of the algorithm is to create a list of points called a triangulation, i.e., a set of triangles characterized by 
@@ -59,14 +70,16 @@ repeat, so duplicates are removed. If there are two edges between the same point
 
 <p align="center">[Delaunay Triangulation for rooms in dungeon]</p> 
 
+
+
 The next step is to find the main path in the dungeon. This should be the optimal route through all rooms. This is 
 facilitated by the Minimum Spanning Tree [https://en.wikipedia.org/wiki/Minimum_spanning_tree]. 
 It is a minimal subtree containing all points in the graph connected by edges with the smallest possible weights, so as not 
 to form cycles. In my case, the graph is unweighted, so when selecting the appropriate edges, the
 first possible one is always chosen. The method offinding the MST involves creating a list of visited points, starting with 
 only one randomly selected point. Then, as long as the list of visited vertices does not contain
-all vertices, an edge that meets the condition ofconnecting a visited point with an unvisited one is searched for. When such 
-an edge is found, it is added to the MST, and the new vertex is added to the list of visited ones.
+all vertices, an edge that meets the condition of connecting a visited point with an unvisited one is searched for. When 
+such an edge is found, it is added to the MST, and the new vertex is added to the list of visited ones.
 
 
 <p align="center">
@@ -86,8 +99,9 @@ usually around 30%).
   <img src="https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/798ae842-2e6f-47b0-b4dd-54a1c9f601ee">
 </p> 
 
-
 <p align="center">[Green color - MST, Blue color - extra edges for cycles in the dungeon, Red color - unused edges ]</p> 
+
+
 
 Now, nothing stands in the way of laying out the appropriate paths between the rooms. This was accomplished using the A* 
 search algorithm. For this purpose, a suitable grid was created to facilitate pathfinding.
@@ -107,6 +121,8 @@ room doors.
 <p align="center">[Grid map representation. White area is place where corridors can be generated. Red area shows where rooms 
 are and where corridors cannot be generated]</p> 
 
+
+
 The algorithm divides all available points (squares in the grid) into two groups: OpenSet and CloseSet. OpenSet stores 
 points that are iterated through, while CloseSet stores points that have been fully explored.
 In the main loop, a point with the smallest total cost is selected, estimated as the sum of the cost of reaching that point 
@@ -120,8 +136,6 @@ loop. Finding the path can end in two ways. The first is when the selected point
 becomes our endpoint, and the loop ends, returning a list of consecutive points leading from start to finish. The second is 
 when all points are explored and OpenSet is empty without finding a point that is our
 endpoint, then an empty path is returned, indicating that such a path does not exist.
-
-
 
 After this process, two ready lists are obtained. One with all the squares in the grid where corridor prefabs should be 
 placed, and the other list containing all the squares in the grid representing corridor prefabs
