@@ -14,7 +14,7 @@ short and winding corridors, I set the size of the initial space to be relativel
 
 ![image](https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/10214b0c-983d-4efe-9e6c-53b7710b61c7)
 
-[Ten rooms in small area]
+                                            [Ten rooms in small area]
 
 The next step is to spread the rooms apart. This involves comparing two consecutive rooms. If they overlap, a length is 
 chosen to determine the distance by which the room will be moved. The distance between the room
@@ -23,7 +23,9 @@ the room is randomly moved in one of four directions by this value. If the afore
 surface on which the rooms are scattered is large, the distance between the rooms will always be the highest value, 
 resulting in long and boring corridors.
 
-[zdiecie rozsunietych ]
+![image](https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/21db1b9f-7bae-4f2e-b5dd-f4a38c22dbf7)
+
+                                            [Ten rooms spread apart]
 
 Now, Delaunay Triangulation can be performed [https://en.wikipedia.org/wiki/Delaunay_triangulation]. Thanks to this 
 algorithm, optimal connections between rooms are found. The set of points used to construct the graph
@@ -31,7 +33,11 @@ consists of coordinates for each room, indicating where thedoor is located and t
 coordinates are calculated based on the local door coordinates for each room and its center
 coordinates in the general space.
 
-[screen door location, screen pokoju z kreskami pokazującymi gdzie jest door location]
+![image](https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/d8e650bf-b60a-400d-9fef-215feeada64e)
+
+
+
+                                    [Door location for room type with index 0]
 
 The goal of the algorithm is to create a list of points called a triangulation, i.e., a set of triangles characterized by 
 the property that no vertex lies inside the circumcircle of any triangle in the set. The first step
