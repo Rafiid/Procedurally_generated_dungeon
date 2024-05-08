@@ -12,7 +12,7 @@ surface determines factors such as the length and winding of individual corridor
 short and winding corridors, I set the size of the initial space to be relatively small, so that most rooms overlap.
 
 
-![image](https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/10214b0c-983d-4efe-9e6c-53b7710b61c7)
+<p align="center">![image](https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/10214b0c-983d-4efe-9e6c-53b7710b61c7)</p> 
 
 <p align="center">[Ten rooms in small area]</p> 
 
@@ -23,7 +23,7 @@ the room is randomly moved in one of four directions by this value. If the afore
 surface on which the rooms are scattered is large, the distance between the rooms will always be the highest value, 
 resulting in long and boring corridors.
 
-![image](https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/21db1b9f-7bae-4f2e-b5dd-f4a38c22dbf7)
+<p align="center">![image](https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/21db1b9f-7bae-4f2e-b5dd-f4a38c22dbf7)</p> 
 
 <p align="center">[Ten rooms spread apart]
 
@@ -33,7 +33,7 @@ consists of coordinates for each room, indicating where thedoor is located and t
 coordinates are calculated based on the local door coordinates for each room and its center
 coordinates in the general space.
 
-![image](https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/d8e650bf-b60a-400d-9fef-215feeada64e)
+<p align="center">![image](https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/d8e650bf-b60a-400d-9fef-215feeada64e)</p> 
 
 
 
@@ -48,7 +48,7 @@ aforementioned condition. After the algorithm is executed, a set of edges belong
 repeat, so duplicates are removed. If there are two edges between the same points in the set
 (i.e., from point A to B and from point B to A), one of these edges is also deleted.
 
-![image](https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/82afb300-fca4-4645-9d88-8bd81d56d276)
+<p align="center">![image](https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/82afb300-fca4-4645-9d88-8bd81d56d276)</p> 
 
 <p align="center">[Delaunay Triangulation for rooms in dungeon]</p> 
 
