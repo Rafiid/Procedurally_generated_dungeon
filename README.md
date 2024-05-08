@@ -26,7 +26,7 @@ surface on which the rooms are scattered is large, the distance between the room
 resulting in long and boring corridors.
 
 <p align="center">
-  <img src="https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/21db1b9f-7bae-4f2e-b5dd-f4a38c22dbf7")
+  <img src="https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/21db1b9f-7bae-4f2e-b5dd-f4a38c22dbf7">
 </p> 
 
 <p align="center">[Ten rooms spread apart]
@@ -37,9 +37,9 @@ consists of coordinates for each room, indicating where thedoor is located and t
 coordinates are calculated based on the local door coordinates for each room and its center
 coordinates in the general space.
 
-<p align="center">![image](https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/d8e650bf-b60a-400d-9fef-215feeada64e)</p> 
-
-
+<p align="center">
+  <img src="https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/d8e650bf-b60a-400d-9fef-215feeada64e">
+</p> 
 
 <p align="center">[Door location for room type with index 0]</p> 
 
@@ -52,7 +52,9 @@ aforementioned condition. After the algorithm is executed, a set of edges belong
 repeat, so duplicates are removed. If there are two edges between the same points in the set
 (i.e., from point A to B and from point B to A), one of these edges is also deleted.
 
-<p align="center">![image](https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/82afb300-fca4-4645-9d88-8bd81d56d276)</p> 
+<p align="center">
+  <img src="https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/82afb300-fca4-4645-9d88-8bd81d56d276">
+</p> 
 
 <p align="center">[Delaunay Triangulation for rooms in dungeon]</p> 
 
