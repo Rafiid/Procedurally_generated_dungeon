@@ -103,7 +103,8 @@ room doors.
   <img src="https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/1ec20c58-195c-47a4-9747-cac589343e2f">
 </p> 
 
-<p align="center">[Grid map representation. White area is place where corridors can be generated. Red area shows where rooms are and where corridors cannot be generated]</p> 
+<p align="center">[Grid map representation. White area is place where corridors can be generated. Red area shows where rooms 
+are and where corridors cannot be generated]</p> 
 
 The algorithm divides all available points (squares in the grid) into two groups: OpenSet and CloseSet. OpenSet stores 
 points that are iterated through, while CloseSet stores points that have been fully explored.
@@ -129,7 +130,11 @@ to intersect. This intentional feature leads to the creation of interesting comb
 even triple corridors, and something resembling squares. Each square on the grid is replaced by
 a corridor prefab, which is simply a small space enclosed by walls on all sides.
 
-[zdj prefabu korytarza]
+<p align="center">
+  <img src="https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/fde6b769-28bb-4c78-b53b-0761dbdfeb97">
+</p> 
+
+<p align="center">[Example of one piece of corridor]</p> 
 
 Now, by comparing all the points in the corridor list, it is checked whether a given point is adjacent to another point that 
 is also in this list. If so, based on the x, y coordinates on the map, its position is
@@ -142,4 +147,16 @@ right of the room, i.e., to the left of the corridor.
 
 Such a conducted algorithm results in the creation of a fully functional, unique dungeon.
 
-[gotowy loch]
+<p align="center">
+  <img src="https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/f69c8b03-0306-4fdb-b552-86d9dc8f778b">
+</p> 
+
+<p align="center">[A view from above of a dungeon with ten rooms]</p> 
+
+
+<p align="center">
+  <img src="https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/a5603734-5944-4867-b524-7a09e4a9a902">
+</p> 
+
+<p align="center">[A view from above of a dungeon with thirty rooms]</p> 
+
