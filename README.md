@@ -13,8 +13,8 @@ short and winding corridors, I set the size of the initial space to be relativel
 
 
 <p align="center">
-  ![image](https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/10214b0c-983d-4efe-9e6c-53b7710b61c7)
-</p> 
+  <img src="https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/10214b0c-983d-4efe-9e6c-53b7710b61c7">
+</p>
 
 <p align="center">[Ten rooms in small area]</p> 
 
