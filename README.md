@@ -1,3 +1,4 @@
+# Description
 The project aims to generate a procedural dungeon in two dimensions, consisting of pre-made room prefabs and corridors 
 connecting these rooms. The project was developed in C# within the Unity environment. It utilizes
 algorithms such as Delaunay triangulation, finding the minimum spanning tree, and the A* search algorithm.
@@ -201,3 +202,9 @@ Such a conducted algorithm results in the creation of a fully functional, unique
 
 <p align="center">[First person view]</p> 
 
+
+# Used assets and other
+- concept: https://www.youtube.com/watch?v=rBY2Dzej03A&t=257s&ab_channel=Vazgriz
+- First person controller: https://assetstore.unity.com/packages/3d/characters/modular-first-person-controller-189884
+- Dungeon prefabs: https://assetstore.unity.com/packages/3d/environments/dungeons/decrepit-dungeon-lite-33936
+- Project that helped me a lot in understanding of Delaunay Triangulation: https://github.com/Vignesh2508/Delaunay/tree/master
