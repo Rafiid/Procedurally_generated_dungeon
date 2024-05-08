@@ -67,14 +67,26 @@ only one randomly selected point. Then, as long as the list of visited vertices 
 all vertices, an edge that meets the condition ofconnecting a visited point with an unvisited one is searched for. When such 
 an edge is found, it is added to the MST, and the new vertex is added to the list of visited ones.
 
-[zdiecie mst]
+
+<p align="center">
+  <img src="https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/8d363118-d780-4933-8714-351cd5c0cc5c">
+</p> 
+
+
+<p align="center">[Path found by MST. Green color - MST, Red color - unused edges ]</p> 
 
 Such a tree creates a dungeon with straight corridors. The next step is to add certain unused edges, which will create 
 cycles in the graph and thus make the dungeon more winding. I iterate through all the edges outside
 the MST and with a certain probability add them to the MST (this probability can be adjusted from the Unity inspector, 
 usually around 30%).
 
-[zdiecie nowego mst]
+
+<p align="center">
+  <img src="https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/798ae842-2e6f-47b0-b4dd-54a1c9f601ee">
+</p> 
+
+
+<p align="center">[Path found by MST. Green color - MST, Blue color - extra edges for cycles in the dungeon, Red color - unused edges ]</p> 
 
 Now, nothing stands in the way of laying out the appropriate paths between the rooms. This was accomplished using the A* 
 search algorithm. For this purpose, a suitable grid was created to facilitate pathfinding.
