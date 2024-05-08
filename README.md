@@ -11,9 +11,8 @@ The first step is to place rooms at random points on a surface with predetermine
 surface determines factors such as the length and winding of individual corridors. To achieve relatively
 short and winding corridors, I set the size of the initial space to be relatively small, so that most rooms overlap.
 
-
 <p align="center">
-  <img src="https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/10214b0c-983d-4efe-9e6c-53b7710b61c7">
+  <img src="https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/77366197-2939-4dd2-ae89-eb24bbacfc40">
 </p>
 
 <p align="center">[Ten rooms in small area]</p> 
