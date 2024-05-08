@@ -160,3 +160,28 @@ Such a conducted algorithm results in the creation of a fully functional, unique
 
 <p align="center">[A view from above of a dungeon with thirty rooms]</p> 
 
+
+<p align="center">
+  <img src="https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/7d5d4a11-ea17-49a0-8628-49e7b725b73f">
+</p> 
+
+<p align="center">[Double corridor]</p> 
+
+<p align="center">
+  <img src="https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/99684b80-9677-462a-a59d-d3e7e04cb2c7">
+</p> 
+
+<p align="center">[Square like place]</p> 
+
+<p align="center">
+  <img src="https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/40d34628-29a4-4c20-9ee7-3c6d227d8525">
+</p> 
+
+<p align="center">[Doors in corridor]</p> 
+
+<p align="center">
+  <img src="https://github.com/Rafiid/Procedurally_generated_dungeon/assets/79717572/729a7ae6-2b1c-45be-a155-1fd00c9d1a51">
+</p> 
+
+<p align="center">[First person view]</p> 
+
